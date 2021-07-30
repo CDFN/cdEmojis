@@ -1,0 +1,52 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
+plugins {
+    id 'java'
+    id 'kr.entree.spigradle' version '2.2.3'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+
+group = 'dev.cdfn'
+version = '1.0.0'
+
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc'
+        url = 'https://papermc.io/repo/repository/maven-public/'
+    }
+    maven {
+        name = "okaeri"
+        url = "https://storehouse.okaeri.eu/repository/maven-public/"
+    }
+}
+
+dependencies {
+    implementation 'eu.okaeri:okaeri-configs-yaml-bukkit:2.7.23'
+    compileOnly 'io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT'
+}
+
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+    prefix = "${project.group}.emojis.dependency"
+}
+
+shadowJar {
+    dependsOn tasks.relocateShadowJar
+    minimize()
+}
+
+jar {
+    dependsOn shadowJar
+}
+
+spigot {
+    name = "cdEmojis"
+    authors = ["CDFN"]
+    version = project.version
+    website = "https://cdfn.dev"
+    apiVersion = "1.17"
+}

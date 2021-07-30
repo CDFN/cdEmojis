@@ -1,0 +1,3 @@
+[submodule "resourcepack-generator/twemoji"]
+	path = resourcepack-generator/twemoji
+	url = https://github.com/twitter/twemoji
