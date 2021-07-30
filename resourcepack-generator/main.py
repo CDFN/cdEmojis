@@ -3,7 +3,7 @@ from os import path
 import json
 import shutil
 
-emojisPath = "twemoji/assets/72x72/"
+emojisPath = "assets/twemoji/assets/72x72/"
 resourcepackPath = "resourcepack/assets/cdemojis/"
 fontDirPath = resourcepackPath + "font/"
 fontTexturesDirPath = resourcepackPath + "textures/font/"
