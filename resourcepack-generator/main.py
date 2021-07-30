@@ -17,7 +17,7 @@ os.makedirs(fontDirPath)
 os.makedirs(fontTexturesDirPath)
 
 # Open file containing emoji mappings
-with open('allmoji.json') as emojiFile:
+with open('assets/allmoji.json') as emojiFile:
     emojis = json.load(emojiFile)
     # Initialize Minecraft's font object
     lang_file = {
