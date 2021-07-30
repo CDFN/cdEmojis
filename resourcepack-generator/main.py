@@ -45,3 +45,4 @@ with open('allmoji.json') as emojiFile:
     # Dump font object into file as json
     with open(fontDirPath + 'default.json', 'w') as outfile:
         json.dump(lang_file, outfile, indent=2, ensure_ascii=False)
+    shutil.make_archive("cdEmoji", 'zip', "resourcepack")
